@@ -28,6 +28,14 @@ def clsOrient():
     #print("\n" * int((round(os.get_terminal_size().lines)/2, 0)))
     print("\n" * heightMargins)
 
+def displayTable(df):
+    #clears screen and prints vertical margins
+    clsOrient()
+    #print the width margins and the table
+    for x in tabulate(df, headers = 'keys', tablefmt = 'psql', stralign='center').split("\n"):
+                print(widthMargins*" " + x)
+    
+
 def pullInfo(ticker, dictionary):
         try:
             #develop a function for pulling the info for a stock (intakes the ticker and the dictionary so it can update it)
@@ -104,10 +112,7 @@ def main():
             pullInfo(x, dict)
         try:
             df = pd.DataFrame(dict)
-            clsOrient()
-            #print the width margins in 
-            for x in tabulate(df, headers = 'keys', tablefmt = 'psql', stralign='center').split("\n"):
-                print(widthMargins*" " + x)
+            displayTable(df)
         except Exception as error:
             #Throws error and dumps the dict data for debugging purposes
             jsondict = json.dumps(dict, indent=4)
@@ -115,6 +120,5 @@ def main():
             print(error)
         #Waits 5 seconds then clears the terminal. measures the size of the window, and adds the verticle margin
         time.sleep(5)
-        clsOrient()
 
 main()
