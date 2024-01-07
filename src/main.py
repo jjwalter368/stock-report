@@ -4,37 +4,10 @@ import pandas as pd
 import json
 import os
 import time
+from display import windowMeasure, clsOrient, displayTable
 
 print("Welcome to Stock Report v1.0.0 by Joshua Walter\n\n")
 watchlist = input("Please Enter The List Of Stocks You Want A Report On (tickers seperated by spaces):\n").split()
-
-def windowMeasure():
-    global height, heightMargins, width, widthMargins
-    height = os.get_terminal_size().lines
-    heightMargins = int(round((height-len(watchlist)-4)/2,0))
-    width = os.get_terminal_size().columns
-    widthMargins = int(round(((width-151)/2),0))
-    if widthMargins < 0:
-        widthMargins = 0
-
-def clsOrient():
-    windowMeasure()
-    #need to learnd about the one line functions and control like this has, will make simpler for now
-    #os.system('cls' if os.name=='nt' else 'clear')
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-    #print("\n" * int((round(os.get_terminal_size().lines)/2, 0)))
-    print("\n" * heightMargins)
-
-def displayTable(df):
-    #clears screen and prints vertical margins
-    clsOrient()
-    #print the width margins and the table
-    for x in tabulate(df, headers = 'keys', tablefmt = 'psql', stralign='center').split("\n"):
-                print(widthMargins*" " + x)
-    
 
 def pullInfo(ticker, dictionary):
         try:
