@@ -85,7 +85,7 @@ def main():
             pullInfo(x, dict)
         try:
             df = pd.DataFrame(dict)
-            displayTable(df)
+            displayTable(df, watchlist)
         except Exception as error:
             #Throws error and dumps the dict data for debugging purposes
             jsondict = json.dumps(dict, indent=4)
