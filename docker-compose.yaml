@@ -6,3 +6,10 @@ services:
       - .:/app
     tty: true
     stdin_open: true
+  api:
+    build: .
+    command: python3 src/api.py
+    volumes:
+      - .:/api
+    tty: true
+    stdin_open: true

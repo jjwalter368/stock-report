@@ -1,3 +1,4 @@
 yfinance
 tabulate
 pandas
+flask

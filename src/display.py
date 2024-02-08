@@ -1,5 +1,6 @@
 import os
 from tabulate import tabulate
+import pandas as pd
 
 def windowMeasure(watchlist):
     global height, heightMargins, width, widthMargins
